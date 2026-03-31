@@ -37,7 +37,7 @@ No, I didn't make any design changes during the implementation as I was brainsto
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
 
----
+The scheduler uses a greedy algorithm that sorts tasks by priority (high to low) and schedules them in that order until the available time budget is exhausted. This approach prioritizes getting the most important tasks done first, but doesn't always produce the most optimal schedule that maximizes the total number of completed tasks.
 
 ## 3. AI Collaboration
 

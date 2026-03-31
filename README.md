@@ -22,6 +22,15 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Smarter Scheduling Features
+
+- Time-Based Sorting: Sort tasks chronologically by their scheduled time (HH:MM format) for better visualization and planning
+- Smart Filtering: Filter tasks by completion status (done/pending) and/or by pet name for targeted task management
+- Recurring Task Management: Daily and weekly tasks automatically generate new occurrences when completed, with accurate date calculations using Python's `timedelta`
+- Conflict Detection: Lightweight conflict detection identifies when multiple tasks overlap in time (same-pet or cross-pet), generating clear warnings instead of crashing
+- Priority-Based Scheduling: Greedy algorithm that prioritizes high-importance tasks first while fitting as many as possible into the available time budget
+- Detailed Explanations: Schedule generation includes reasoning for why tasks were included or skipped, helping owners understand the system's decisions
+
 ## Getting started
 
 ### Setup
