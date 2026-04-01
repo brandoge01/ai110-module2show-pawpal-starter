@@ -31,6 +31,31 @@ Your final app should:
 - Priority-Based Scheduling: Greedy algorithm that prioritizes high-importance tasks first while fitting as many as possible into the available time budget
 - Detailed Explanations: Schedule generation includes reasoning for why tasks were included or skipped, helping owners understand the system's decisions
 
+## Testing PawPal+
+python -m pytest
+
+Confidence: 3.5 stars
+
+Sorting & Scheduling:
+- Chronological task sorting by time (HH:MM)
+- Priority-based schedule generation (high → medium → low)
+- Time budget constraints (fitting tasks within available minutes)
+
+Recurring Tasks:
+- Daily task recurrence (advances by 1 day)
+- Weekly task recurrence (advances by 7 days)
+- Month/year boundary transitions (e.g., Jan 31 → Feb 1)
+
+Conflict Detection:
+- Cross-pet task overlaps
+- Same-pet task overlaps
+- Non-overlapping tasks (no false positives)
+
+General Functionality:
+- Task completion status updates
+- Task list management (add/remove)
+- Recurring task data preservation (title, duration, priority, time)
+
 ## Getting started
 
 ### Setup
