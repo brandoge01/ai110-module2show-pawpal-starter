@@ -22,6 +22,49 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Implemented Features
+
+### 1. **Priority-Based Greedy Scheduling**
+   - **Algorithm**: Sorts all tasks by priority (high=3, medium=2, low=1) in descending order, then greedily adds tasks to schedule if they fit within remaining time budget
+   - **Behavior**: High-priority tasks are guaranteed slots first; lower-priority tasks fit what's left
+   - **Output**: Separates planned tasks (fit) from skipped tasks (insufficient time)
+
+### 2. **Time-Based Chronological Sorting** 
+   - **Algorithm**: Converts HH:MM time strings to minutes since midnight, sorts numerically
+   - **Behavior**: Tasks are displayed in chronological order regardless of input order
+   - **Example**: Tasks at 18:00, 08:00, 12:30 → sorted to 08:00, 12:30, 18:00
+
+### 3. **Recurring Task Automation**
+   - **Daily Recurrence**: When a daily task is marked complete, a new task is automatically generated for `today + 1 day`
+   - **Weekly Recurrence**: When a weekly task is marked complete, a new task is automatically generated for `today + 7 days`
+   - **Date Handling**: Uses Python's `timedelta` for accurate month/year boundary transitions (e.g., Jan 31 → Feb 1)
+   - **Data Preservation**: New task instances inherit title, duration, priority, frequency, and time from original
+
+### 4. **Conflict Detection (Time Overlap Warnings)**
+   - **Algorithm**: O(n²) pairwise comparison of all pending tasks; checks if `max(start_a, start_b) < min(end_a, end_b)`
+   - **Coverage**: Detects both same-pet conflicts (task A and B for same pet) and cross-pet conflicts (task for pet A vs pet B)
+   - **Output**: Returns list of warning messages; empty list = no conflicts
+   - **Non-destructive**: Warns instead of blocking, allowing users to make informed decisions
+
+### 5. **Filtered Task Management**
+   - **Filter by Completion Status**: Get only done tasks, pending tasks, or all tasks
+   - **Filter by Pet**: Get tasks for specific pet(s) or across all pets
+   - **Combination**: Filter by both criteria simultaneously (e.g., "pending tasks for Mochi")
+
+### 6. **Schedule Explanation & Reasoning**
+   - **Planned Tasks**: Lists chosen tasks with reasoning (order, how they fit)
+   - **Skipped Tasks**: Lists tasks that didn't fit with "insufficient time" reason
+   - **Time Budget Breakdown**: Shows total scheduled time vs available minutes
+   - **Human-Readable Output**: Natural language explanation of scheduling decisions
+
+### 7. **Time Budget Constraint Enforcement**
+   - **Greedy Algorithm**: Respects `available_minutes` hard constraint
+   - **Remaining Time Tracking**: Subtracts each task duration from budget; stops when next task won't fit
+   - **Visual Feedback**: Displays remaining minutes after schedule generation
+
+## 📸 Demo
+<a href="Demo1.png" target="_blank"><img src='Demo1.png' title='PawPal App' width='' alt='PawPal App' class='center-block' /></a>
+
 ## Smarter Scheduling Features
 
 - Time-Based Sorting: Sort tasks chronologically by their scheduled time (HH:MM format) for better visualization and planning
